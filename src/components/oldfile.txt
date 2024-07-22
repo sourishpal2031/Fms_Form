@@ -19,6 +19,8 @@ import { getUsers, deleteUser, updateUser } from '../service/api';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as XLSX from 'xlsx';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const StyledTable = styled(Table)`
   width: 90%;
@@ -83,6 +85,7 @@ const AllUsers = () => {
       setLoading(false);
     }
   };
+
   const handleSearch = () => {
     let filtered = users.filter((user) =>
       user.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -154,6 +157,7 @@ const AllUsers = () => {
     setIsSorted(!isSorted);
     handleSearch();
   };
+
   return (
     <div>
       {loading ? (
@@ -200,7 +204,7 @@ const AllUsers = () => {
                 <TableCell>Date Inactive</TableCell>
                 <TableCell>Actions</TableCell>
               </Thead>
-              </TableHead>
+            </TableHead>
             <TableBody>
               {filteredUsers.map((user) => (
                 <TBody key={user.id}>

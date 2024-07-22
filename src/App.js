@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import AddUser from './components/AddUser';
 import AllUser from './components/AllUser';
 import EditUser from './components/EditUser';
-import Sourishform from './components/Sourishform';
+import FortescueForm from './components/FortescueForm';
 import {BrowserRouter, Routes,Route} from 'react-router-dom';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <NavBar/>
       <Routes>
-      <Route path="/" element={<Sourishform/>}/>
+      <Route path="/" element={<FortescueForm/>}/>
       <Route path="/add" element={<AddUser/>}/>
       <Route path="/all" element={<AllUser/>}/>
       <Route path='/edit/:id' element={<EditUser/>}/>

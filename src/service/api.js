@@ -43,3 +43,6 @@ export const deleteUser=async(id)=>{
     }
 }
 
+export const updateUser = async (id, updatedUser) => {
+    return await axios.put(`${API_URL}/${id}`, updatedUser);
+  };

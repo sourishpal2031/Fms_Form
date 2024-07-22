@@ -19,6 +19,8 @@ import { getUsers, deleteUser, updateUser } from '../service/api';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as XLSX from 'xlsx';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const StyledTable = styled(Table)`
   width: 90%;
@@ -58,7 +60,7 @@ const AllUsers = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isSorted, setIsSorted] = useState(false);
+  const [sortOrder, setSortOrder] = useState('asc');
 
   const itemsPerPage = 10;
 
@@ -83,14 +85,11 @@ const AllUsers = () => {
       setLoading(false);
     }
   };
+
   const handleSearch = () => {
     let filtered = users.filter((user) =>
       user.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    
-    if (isSorted) {
-      filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
-    }
 
     setTotalPages(Math.ceil(filtered.length / itemsPerPage));
     setFilteredUsers(filtered.slice((page - 1) * itemsPerPage, page * itemsPerPage));
@@ -150,10 +149,20 @@ const AllUsers = () => {
     XLSX.writeFile(workbook, 'UsersData.xlsx');
   };
 
-  const toggleSort = () => {
-    setIsSorted(!isSorted);
-    handleSearch();
+  
+
+  const sortByName = () => {
+    const sortedUsers = [...users].sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
+    setUsers(sortedUsers);
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
+
   return (
     <div>
       {loading ? (
@@ -179,20 +188,14 @@ const AllUsers = () => {
               >
                 Download Data
               </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={toggleSort}
-                style={{ marginLeft: 20 }}
-              >
-                {isSorted ? 'Unsort' : 'Sort by Name'}
-              </Button>
             </div>
           </SearchContainer>
           <StyledTable>
             <TableHead>
               <Thead>
-                <TableCell>Name</TableCell>
+                 <TableCell onClick={sortByName} style={{ cursor: 'pointer' }}>
+            Name {sortOrder === 'asc' ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
+          </TableCell>
                 <TableCell>EmpID</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Phone</TableCell>
@@ -200,7 +203,7 @@ const AllUsers = () => {
                 <TableCell>Date Inactive</TableCell>
                 <TableCell>Actions</TableCell>
               </Thead>
-              </TableHead>
+            </TableHead>
             <TableBody>
               {filteredUsers.map((user) => (
                 <TBody key={user.id}>

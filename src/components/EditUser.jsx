@@ -16,7 +16,7 @@ margin: 5% auto 0 auto;
 `
 const initialValues={
     name:'',
-    username:'',
+    EmpID:'',
     email:'',
     phone:''
 }
@@ -26,7 +26,7 @@ const EditUser=()=>{
     const[user,setUser]=useState(initialValues);
     let navigate=useNavigate();
     const {id}=useParams();
-    const{name,username,email,phone}=user;
+    const{name,EmpID,email,phone}=user;
 
     useEffect(()=>{
         loadUserData();
@@ -60,9 +60,9 @@ const EditUser=()=>{
             </FormControl>
             <FormControl>
                 <InputLabel htmlFor="my-input">
-                    Username
+                    EmpID
                 </InputLabel>
-                <Input  onChange={(e)=>onValueChange(e)} name="username" value={username} id="my-input" aria-describedby="my-helper-text"/>
+                <Input  onChange={(e)=>onValueChange(e)} name="EmpID" value={EmpID} id="my-input" aria-describedby="my-helper-text"/>
             </FormControl>
             <FormControl>
                 <InputLabel htmlFor="my-input">

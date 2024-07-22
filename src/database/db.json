@@ -1,32 +1,44 @@
 {
   "users": [
     {
-      "name": "Rohit Sharma",
-      "username": "rohitsharma",
-      "email": "rohit@gmail.com",
-      "phone": "3433565545",
-      "id": "1"
+      "id": "fb45",
+      "name": "ay",
+      "EmpID": "dfhgd",
+      "email": "srgr",
+      "phone": "srg",
+      "active": true,
+      "dateActive": "2024-05-26T09:15:37.127Z",
+      "dateInactive": null
     },
     {
-      "id": "0b72",
-      "name": "sourishpal2031@gmail.com",
-      "username": "sourishpal2031@gmail.com",
-      "email": "pal.sourish@tcs.com",
-      "phone": "09875329891"
+      "id": "2271",
+      "name": "r",
+      "EmpID": "pal",
+      "email": "kcsas",
+      "phone": "9093",
+      "active": false,
+      "dateActive": "2024-05-27T11:50:36.582Z",
+      "dateInactive": "2024-05-27T11:57:53.322Z"
     },
     {
-      "id": "2633",
-      "name": "e",
-      "username": "gd",
-      "email": "gd",
-      "phone": "gderer"
+      "id": "def5",
+      "name": "d",
+      "EmpID": "hdrh",
+      "email": "j",
+      "phone": "jf",
+      "active": true,
+      "dateActive": "2024-07-22T13:34:38.859Z",
+      "dateInactive": null
     },
     {
-      "id": "1ef0",
-      "name": "44",
-      "username": "44",
-      "email": "44",
-      "phone": "44"
+      "id": "05a1",
+      "name": "S P",
+      "EmpID": "dwdwdwf",
+      "email": "sourishpal2031@gmail.com",
+      "phone": "dwef",
+      "active": true,
+      "dateActive": "2024-07-22T14:41:58.887Z",
+      "dateInactive": null
     }
   ]
 }
